@@ -8,6 +8,7 @@
 
 #import "IETModelBindCell.h"
 #import "IETSeparator.h"
+#import "UIView+IETAdd.h"
 
 @interface IETModelBindCell()
 @property (nonatomic, strong) UIView *separator;

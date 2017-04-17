@@ -13,6 +13,8 @@
 #import "IETSession.h"
 #import "IETModelColumn.h"
 
+#import "NSDictionary+IETAdd.h"
+
 
 static NSMutableDictionary *m_columnHash;
 //static IETDataBase *m_database;

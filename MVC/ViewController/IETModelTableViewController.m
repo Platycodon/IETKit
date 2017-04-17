@@ -10,6 +10,9 @@
 #import "IETModel.h"
 #import "IETSection.h"
 #import "MJRefresh.h"
+#import "UIView+IETAdd.h"
+#import "NSDictionary+IETAdd.h"
+#import "NSArray+IETAdd.h"
 
 @interface IETTableFooterView : UIView
 @property (nonatomic, assign) NSInteger state;//0 空闲，即无任何表示 1加载更多中 2无更多
@@ -23,8 +26,8 @@
         _indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
         [self addSubview:_indicator];
         _label = [UILabel new];
-        _label.textColor = COLOR_COMMON_TEXT_GRAY;
-        _label.font = SYS_FONT(12);
+        _label.textColor = [UIColor colorWithRed:201/255.0 green:201/255.0 blue:201/255.0 alpha:1.0];
+        _label.font = [UIFont systemFontOfSize:12];
         [self addSubview:_label];
     }
     return self;
@@ -131,8 +134,8 @@
     _backImageView.hidden = YES;
     
     _backLabel = [UILabel new];
-    _backLabel.textColor = COLOR_COMMON_TEXT_LIGHTGRAY;
-    _backLabel.font = SYS_FONT(13);
+    _backLabel.textColor = [UIColor colorWithRed:201/255.0 green:201/255.0 blue:201/255.0 alpha:1];
+    _backLabel.font = [UIFont systemFontOfSize:13];
     _backLabel.text = @"暂无相关结果";
     _backLabel.frame = CGRectMake(50, _backImageView.bottom+20, self.view.width-100, 50);
     _backLabel.textAlignment = NSTextAlignmentCenter;
@@ -282,7 +285,6 @@
         }
         self.since = since;
         [self endRefresh];
-        [self dismissLoadingHUD];
         [self.tableModels addObjectsFromArray:models];
         [self reloadData];
     }

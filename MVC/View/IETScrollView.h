@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TPKeyboardAvoidingScrollView.h"
 
-@interface IETScrollView : TPKeyboardAvoidingScrollView
+@interface IETScrollView : UIScrollView
 
 @end

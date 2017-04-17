@@ -12,6 +12,7 @@
 #import "NSDate+IETAdd.h"
 #import "NSString+IETAdd.h"
 #import "IETSession.h"
+#import "NSDictionary+IETAdd.h"
 
 @interface IETNetClient ()
 
