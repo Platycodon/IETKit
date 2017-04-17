@@ -7,77 +7,77 @@
 //
 
 #import "UIViewController+NTAdd.h"
-#import "MBProgressHUD.h"
+//#import "MBProgressHUD.h"
 @implementation UIViewController (NTAdd)
 
 
-- (void)showLoadingHUD
-{
-    [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
-}
-
-
-- (void)dismissLoadingHUD
-{
-    
-    [MBProgressHUD hideHUDForView:[UIApplication sharedApplication].keyWindow animated:YES];
-}
-
-- (void)showFailureError:(NSError *)error
-{
-    [self dismissLoadingHUD];
-    
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
-    
-    // Set the text mode to show only text.
-    if (error.code == 500) {
-        hud.mode = MBProgressHUDModeText;
-        hud.label.text = @"请求超时";
-    }else{
-        hud.mode = MBProgressHUDModeText;
-        if ([NSLocalizedString(error.userInfo[@"NSLocalizedDescription"], @"HUD message title") isEqualToString:@"请求超时。"]) {
-            hud.label.text = @"请求超时";
-        }else {
-             hud.label.text = NSLocalizedString(error.userInfo[@"NSLocalizedDescription"], @"HUD message title");
-        }
-    }
-    // Move to bottm center.
-    
-    hud.offset = CGPointMake(0.f, MBProgressMaxOffset);
-    
-    [hud hideAnimated:YES afterDelay:1.75];
-    
-}
-
-
-- (void)showSuccessMessage:(NSString *)message
-{
-    [self dismissLoadingHUD];
-    
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
-    
-    // Set the text mode to show only text.
-    hud.mode = MBProgressHUDModeText;
-    hud.label.text = NSLocalizedString(message, @"HUD message title");
-    // Move to bottm center.
-    hud.offset = CGPointMake(0.f, MBProgressMaxOffset);
-    
-    [hud hideAnimated:YES afterDelay:1.75];
-    
-}
-- (void)showWaringWithMessage:(NSString *)message
-{
-    [self dismissLoadingHUD];
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
-    
-    // Set the text mode to show only text.
-    hud.mode = MBProgressHUDModeText;
-    hud.label.text = NSLocalizedString(message, @"HUD message title");
-    // Move to bottm center.
-    hud.offset = CGPointMake(0.f, MBProgressMaxOffset);
-    [hud hideAnimated:YES afterDelay:1.75];
-}
-
+//- (void)showLoadingHUD
+//{
+//    [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
+//}
+//
+//
+//- (void)dismissLoadingHUD
+//{
+//    
+//    [MBProgressHUD hideHUDForView:[UIApplication sharedApplication].keyWindow animated:YES];
+//}
+//
+//- (void)showFailureError:(NSError *)error
+//{
+//    [self dismissLoadingHUD];
+//    
+//    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
+//    
+//    // Set the text mode to show only text.
+//    if (error.code == 500) {
+//        hud.mode = MBProgressHUDModeText;
+//        hud.label.text = @"请求超时";
+//    }else{
+//        hud.mode = MBProgressHUDModeText;
+//        if ([NSLocalizedString(error.userInfo[@"NSLocalizedDescription"], @"HUD message title") isEqualToString:@"请求超时。"]) {
+//            hud.label.text = @"请求超时";
+//        }else {
+//             hud.label.text = NSLocalizedString(error.userInfo[@"NSLocalizedDescription"], @"HUD message title");
+//        }
+//    }
+//    // Move to bottm center.
+//    
+//    hud.offset = CGPointMake(0.f, MBProgressMaxOffset);
+//    
+//    [hud hideAnimated:YES afterDelay:1.75];
+//    
+//}
+//
+//
+//- (void)showSuccessMessage:(NSString *)message
+//{
+//    [self dismissLoadingHUD];
+//    
+//    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
+//    
+//    // Set the text mode to show only text.
+//    hud.mode = MBProgressHUDModeText;
+//    hud.label.text = NSLocalizedString(message, @"HUD message title");
+//    // Move to bottm center.
+//    hud.offset = CGPointMake(0.f, MBProgressMaxOffset);
+//    
+//    [hud hideAnimated:YES afterDelay:1.75];
+//    
+//}
+//- (void)showWaringWithMessage:(NSString *)message
+//{
+//    [self dismissLoadingHUD];
+//    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
+//    
+//    // Set the text mode to show only text.
+//    hud.mode = MBProgressHUDModeText;
+//    hud.label.text = NSLocalizedString(message, @"HUD message title");
+//    // Move to bottm center.
+//    hud.offset = CGPointMake(0.f, MBProgressMaxOffset);
+//    [hud hideAnimated:YES afterDelay:1.75];
+//}
+//
 
 
 +(instancetype)currentViewController
