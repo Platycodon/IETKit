@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IETViewController : UIViewController
+@interface IETViewController : UIViewController<UINavigationControllerDelegate>
+
+@property (nonatomic, assign) BOOL showBackWhatever;
 
 @end

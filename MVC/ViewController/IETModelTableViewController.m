@@ -11,8 +11,9 @@
 #import "IETSection.h"
 #import "MJRefresh.h"
 #import "UIView+IETAdd.h"
-#import "NSDictionary+IETAdd.h"
 #import "NSArray+IETAdd.h"
+#import "NSDictionary+IETAdd.h"
+#import "IETTableSeparatorCell.h"
 
 @interface IETTableFooterView : UIView
 @property (nonatomic, assign) NSInteger state;//0 空闲，即无任何表示 1加载更多中 2无更多
@@ -61,7 +62,9 @@
 @end
 
 @interface IETModelTableViewController ()
-
+{
+    BOOL _hasMore;
+}
 @property (nonatomic, strong) IETTableView *tableView;
 @property (nonatomic, strong) UILabel *backLabel;
 @property (nonatomic, strong) IETTableFooterView *footerView;
@@ -95,6 +98,7 @@
         _refreshEnable = NO;
         _since = @"0";
         _showBackLabel = YES;
+        _hasMore = YES;
     }
     return self;
 }
@@ -179,7 +183,7 @@
 
 -(void)loadModelCellMap
 {
-    //子类实现
+    [self registerModelClass:[IETTableSeparator class] mappedCellClass:[IETTableSeparatorCell class]];
 }
 
 -(void)configureCell:(UITableViewCell<IETModelBindProtocol> *)cell atIndexPath:(NSIndexPath *)indexPath
@@ -276,8 +280,9 @@
     [self fetchData];
 }
 
-- (void)finishFecthDataWithModels:(NSArray *)models since:(NSString *)since
+- (void)finishFecthDataWithModels:(NSArray *)models since:(NSString *)since hasMore:(BOOL)hasMore
 {
+    _hasMore = hasMore;
     //目前仅支持不带section的格式
     if (self.tableModels.count == 0 || ![self.tableModels[0] isKindOfClass:[IETSection class]]) {
         if ([self.since isEqualToString:@"0"]) {
@@ -327,14 +332,6 @@
     return cell;
 }
 
-//-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    IETModel *model = [self modelAtIndexPath:indexPath];
-//    Class cellClass = NSClassFromString([_modelCellClassMap objectOrNilForKey:NSStringFromClass([model class])]);
-//    return [cellClass cellHeightWithModel:model];
-//    return 44.0;
-//}
-
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -348,9 +345,9 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (_refreshEnable) {
-        if (self.tableModels.count>0 &&_since.length &&![_since isEqualToString:@"-1"]&&![_since isEqualToString:@"0"]) {
+        if (self.tableModels.count>0 && _hasMore && ![_since isEqualToString:@"0"]) {
             if (![self.tableModels[0] isKindOfClass:[IETSection class]]) {
-                if (indexPath.row == self.tableModels.count - 2) {
+                if (indexPath.row == self.tableModels.count - 1) {
                     //加载更多
                     _footerView.state = 1;
                     [self upscrollrefreshAction];
@@ -358,7 +355,7 @@
             }else{
                 //带section的刷新比较麻烦，后期用到的时候再补充吧，需要后台配合
             }
-        }else if ([_since isEqualToString:@"-1"]){//无更多
+        }else if (_hasMore == NO){
             _footerView.state = 2;
         }
     }

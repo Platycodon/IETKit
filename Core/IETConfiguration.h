@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface IETConfiguration : NSObject
 
@@ -41,6 +42,16 @@
  * http请求超时时间
  */
 @property (nonatomic, assign) NSTimeInterval requestTimeoutTime;
+
+/**
+ vc的背景色
+ */
+@property (nonatomic, copy) UIColor *vcBackgroundColor;
+
+/**
+ vc返回箭头图片名
+ */
+@property (nonatomic, copy) NSString *backArrowName;
 
 
 + (instancetype)defaultConfiguration;

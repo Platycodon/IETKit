@@ -194,7 +194,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable NSURLSessionDownloadTask * )downloadFromUrl:(NSString *)url
                                            topath:(NSString *)path
                                          progress:(void (^)(NSProgress * _Nonnull))progress
-                                          success:(void (^)(id _Nullable responseObject, NSString *message))success
+                                          success:(void (^)(NSURL * _Nullable filePath, NSString *message))success
                                           failure:(void (^)(NSError * _Nonnull error))failure;
 
 

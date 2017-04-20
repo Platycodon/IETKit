@@ -10,6 +10,14 @@
 
 @implementation IETModel
 
++ (NSDictionary<NSString *,id> *)modelCustomPropertyMapper  {
+    return @{};
+}
+
++ (NSDictionary<NSString *,id> *)modelContainerPropertyGenericClass
+{
+    return @{};
+}
 
 + (instancetype)modelWithDictionary:(NSDictionary *)dictionary
 {

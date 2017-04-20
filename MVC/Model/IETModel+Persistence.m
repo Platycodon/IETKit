@@ -7,13 +7,12 @@
 //
 
 #import "IETModel+Persistence.h"
+#import "NSDictionary+IETAdd.h"
 
 #import "IETDataBase.h"
 #import "NSSet+IETAdd.h"
 #import "IETSession.h"
 #import "IETModelColumn.h"
-
-#import "NSDictionary+IETAdd.h"
 
 
 static NSMutableDictionary *m_columnHash;

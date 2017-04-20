@@ -10,10 +10,12 @@
 
 #import "IETModelBindProtocol.h"
 #import "IETTableView.h"
+#import "IETViewController.h"
+#import "IETTableSeparator.h"
 
 @class IETModel;
 
-@interface IETModelTableViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
+@interface IETModelTableViewController : IETViewController <UITableViewDelegate,UITableViewDataSource>
 
 
 @property (nonatomic, strong, readonly) IETTableView *tableView;
@@ -56,7 +58,7 @@
 - (void)upscrollrefreshAction;
 
 
-- (void)finishFecthDataWithModels:(NSArray *)models since:(NSString *)since;
+- (void)finishFecthDataWithModels:(NSArray *)models since:(NSString *)since hasMore:(BOOL)hasMore;
 
 - (void)goBack;
 @end
