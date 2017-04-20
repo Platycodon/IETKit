@@ -91,13 +91,7 @@
 
 - (NSString *)encodeToPercentEscapeString: (NSString *) input
 {
-    NSString*  outputStr = (__bridge NSString *)CFURLCreateStringByAddingPercentEscapes(
-                                                                                        NULL, /* allocator */
-                                                                                        (__bridge CFStringRef)input,
-                                                                                        NULL, /*解决含有的转义字符*/
-                                                                                        (CFStringRef)@"",
-                                                                                        kCFStringEncodingUTF8);
-    return outputStr;
+    return [input stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
 }
 
 - (void)analyseResponseObject:(id)responseObject WithSuccess:(void (^)(id _Nullable, NSString *))success failure:(void (^)(NSError * _Nonnull))failure
