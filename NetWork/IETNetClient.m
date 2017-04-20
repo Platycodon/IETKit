@@ -108,7 +108,9 @@
             failure(error);
         }
         return;
-    }    NSDictionary *res = (NSDictionary *)responseObject;
+    }
+    NSDictionary *res = (NSDictionary *)responseObject;
+    //根据不同的项目，可能有不同的数据包格式，再次进行适配。
     if (![[res objectOrNilForKey:@"success"] boolValue]) {
         NSError *error = [NSError errorWithDomain:[IETConfiguration defaultConfiguration].errorDomain code:[[res objectOrNilForKey:@"code"] integerValue] userInfo:@{NSLocalizedDescriptionKey:[res objectOrNilForKey:@"message"]}];
         if (failure) {
