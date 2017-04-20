@@ -7,6 +7,7 @@
 //
 
 #import "IETModel+Persistence.h"
+#import "NSDictionary+IETAdd.h"
 
 #import "IETDataBase.h"
 #import "NSSet+IETAdd.h"

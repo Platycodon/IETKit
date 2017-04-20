@@ -7,8 +7,7 @@
 //
 
 #import "UITableView+FDTemplateLayoutCell.h"
-#import "TPKeyboardAvoidingTableView.h"
 
-@interface IETTableView : TPKeyboardAvoidingTableView
+@interface IETTableView : UITableView
 
 @end

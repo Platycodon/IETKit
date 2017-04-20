@@ -18,6 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, readonly) NSString *httpAccount;
 @property (nonatomic, copy, readonly) NSString *httpPassword;
 
+/**
+ api登陆验证key,如没有协定，则设置为user的identifier
+ */
 @property (nonatomic, copy, nullable) NSString  *apiKey;
 
 @property (nonatomic, copy, readonly) NSString *userPath;

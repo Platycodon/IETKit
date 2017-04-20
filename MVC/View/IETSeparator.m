@@ -7,6 +7,7 @@
 //
 
 #import "IETSeparator.h"
+#import "CALayer+IETAdd.h"
 
 @implementation IETSeparator
 

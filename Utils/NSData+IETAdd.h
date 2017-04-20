@@ -12,4 +12,8 @@
 
 - (NSString *)md5String;
 
+- (NSString *)base64EncodedString;
+
++ (NSData *)dataWithBase64EncodedString:(NSString *)base64EncodedString;
+
 @end

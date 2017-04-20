@@ -14,6 +14,7 @@
 #import "IETSystemDriver.h"
 
 #import "IETDataBase.h"
+#import "NSDictionary+IETAdd.h"
 
 @interface IETSession()
 
