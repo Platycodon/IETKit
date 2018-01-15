@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "IETModel.h"
 @class IETFormItem;
-@class IETModel;
 
 @protocol IETFormItemDelegate <NSObject>
 
@@ -22,7 +21,7 @@
 /**
  formitem的基类，不要直接使用
  */
-@interface IETFormItem : NSObject
+@interface IETFormItem : IETModel
 
 @property (nonatomic, weak) id<IETFormItemDelegate> delegate;
 

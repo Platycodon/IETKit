@@ -124,4 +124,30 @@ static const short base64DecodingTable[256] = {
 }
 
 
++ (NSData *)createPDFDataFromUIScrollView:(UIScrollView *)scrollView {
+    NSMutableData *pdfData = [NSMutableData data];
+    
+    UIGraphicsBeginPDFContextToData(pdfData, (CGRect){0,0, scrollView.contentSize}, nil);
+    
+    UIGraphicsBeginPDFPageWithInfo(CGRectMake(0, 0, scrollView.contentSize.width,scrollView.contentSize.height), nil);
+    
+    CGContextRef pdfContext = UIGraphicsGetCurrentContext();
+    
+    CGRect origSize = scrollView.frame;
+    
+    CGRect newSize = origSize;
+    
+    newSize.size = scrollView.contentSize;
+    
+    [scrollView setFrame:newSize];
+    
+    [scrollView.layer renderInContext:pdfContext];
+    
+    [scrollView setFrame:origSize];
+    
+    UIGraphicsEndPDFContext();
+    
+    return pdfData;
+}
+
 @end

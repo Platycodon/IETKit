@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface NSData (IETAdd)
 
@@ -15,5 +16,7 @@
 - (NSString *)base64EncodedString;
 
 + (NSData *)dataWithBase64EncodedString:(NSString *)base64EncodedString;
+
++ (NSData *)createPDFDataFromUIScrollView:(UIScrollView *)scrollView;
 
 @end
